@@ -1,0 +1,33 @@
+{
+  "manifest_version": 3,
+  "name": "Page2Email",
+  "version": "1.0.0",
+  "description": "Capture the current page as a screenshot or PDF and email it instantly.",
+  "permissions": ["activeTab", "tabs", "scripting", "downloads", "storage"],
+  "action": {
+    "default_popup": "src/popup.html",
+    "default_title": "Page2Email – Capture & Email this page",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "background": {
+    "service_worker": "src/background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["src/content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}

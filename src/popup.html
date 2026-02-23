@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Page2Email</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <img src="../icons/icon48.png" alt="Page2Email" class="logo" />
+      <h1 class="title">Page2Email</h1>
+    </header>
+
+    <!-- Capture format -->
+    <section class="section" aria-labelledby="format-label">
+      <p class="section-label" id="format-label">Capture format</p>
+      <div class="radio-group" role="radiogroup" aria-labelledby="format-label">
+        <label class="radio-option">
+          <input type="radio" name="format" value="screenshot" id="fmt-screenshot" checked />
+          <span class="radio-icon">🖼️</span>
+          <span class="radio-text">
+            <strong>Screenshot</strong>
+            <small>PNG image of the visible page</small>
+          </span>
+        </label>
+        <label class="radio-option">
+          <input type="radio" name="format" value="pdf" id="fmt-pdf" />
+          <span class="radio-icon">📄</span>
+          <span class="radio-text">
+            <strong>PDF</strong>
+            <small>Opens print dialog (Save as PDF)</small>
+          </span>
+        </label>
+      </div>
+    </section>
+
+    <!-- Email method -->
+    <section class="section" aria-labelledby="method-label">
+      <p class="section-label" id="method-label">Send via</p>
+      <div class="radio-group" role="radiogroup" aria-labelledby="method-label">
+        <label class="radio-option">
+          <input type="radio" name="method" value="mailto" id="method-mailto" checked />
+          <span class="radio-icon">📧</span>
+          <span class="radio-text">
+            <strong>Default email app</strong>
+            <small>Opens your mail client (mailto)</small>
+          </span>
+        </label>
+        <label class="radio-option">
+          <input type="radio" name="method" value="gmail" id="method-gmail" />
+          <span class="radio-icon">✉️</span>
+          <span class="radio-text">
+            <strong>Gmail</strong>
+            <small>Opens Gmail compose tab</small>
+          </span>
+        </label>
+        <label class="radio-option">
+          <input type="radio" name="method" value="outlook" id="method-outlook" />
+          <span class="radio-icon">📨</span>
+          <span class="radio-text">
+            <strong>Outlook</strong>
+            <small>Opens Outlook Web compose tab</small>
+          </span>
+        </label>
+      </div>
+    </section>
+
+    <!-- Recipients -->
+    <section class="section">
+      <label class="field-label" for="recipients">To (comma-separated)</label>
+      <div class="input-row">
+        <input
+          type="text"
+          id="recipients"
+          class="input"
+          placeholder="you@example.com, team@company.com"
+        />
+        <button type="button" id="btn-send-to-me" class="btn-secondary" title="Use saved 'Send to me' address">
+          Me
+        </button>
+      </div>
+    </section>
+
+    <!-- Subject -->
+    <section class="section">
+      <label class="field-label" for="subject">Subject</label>
+      <input type="text" id="subject" class="input" placeholder="Auto-generated from page title" />
+    </section>
+
+    <!-- Notes -->
+    <section class="section">
+      <label class="field-label" for="notes">Notes / body</label>
+      <textarea
+        id="notes"
+        class="input textarea"
+        rows="3"
+        placeholder="Add a note, expense code, ticket number…"
+      ></textarea>
+    </section>
+
+    <!-- Save "me" address -->
+    <section class="section section-me" id="section-save-me" hidden>
+      <label class="field-label" for="my-email">My email address</label>
+      <div class="input-row">
+        <input type="email" id="my-email" class="input" placeholder="your@email.com" />
+        <button type="button" id="btn-save-me" class="btn-secondary">Save</button>
+      </div>
+      <p class="hint" id="save-me-status"></p>
+    </section>
+
+    <!-- Actions -->
+    <div class="actions">
+      <button type="button" id="btn-capture" class="btn-primary">
+        <span id="btn-capture-text">📸 Capture &amp; Send</span>
+        <span id="btn-spinner" class="spinner" hidden aria-label="Capturing…"></span>
+      </button>
+    </div>
+
+    <!-- Status / feedback -->
+    <div id="status" class="status" role="status" aria-live="polite" hidden></div>
+
+    <!-- Settings toggle -->
+    <div class="settings-row">
+      <button type="button" id="btn-toggle-settings" class="btn-link">⚙️ My email address</button>
+    </div>
+  </div>
+
+  <script src="utils.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
